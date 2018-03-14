@@ -1,5 +1,9 @@
 import {MediaMatcher} from '@angular/cdk/layout';
+import {FormControl} from '@angular/forms'
+import {Observable} from 'rxjs/Observable';
 import {ChangeDetectorRef, Component} from '@angular/core';
+import {startWith} from 'rxjs/operators/startWith';
+import {map} from 'rxjs/operators/map';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +13,11 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 
 export class AppComponent {
   mobileQuery: MediaQueryList;
-
-  fillerNav = Array(50).fill(0).map((_, i) => `Nav Item ${i + 1}`);
-
-  fillerContent = Array(50).fill(0).map(() =>
-      `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-       laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`);
-
+  fillerNav = Array(10).fill(0).map((_, i) => `Nav Item ${i + 1}`);
   private _mobileQueryListener: () => void;
+  myControl: FormControl = new FormControl();
+  options = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -27,7 +25,18 @@ export class AppComponent {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(val => this.filter(val))
+    );
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  filter(val: string): string[] {
+    return this.options.filter(option => option.toLowerCase().indexOf(val.toLowerCase()) === 0);
   }
 }
