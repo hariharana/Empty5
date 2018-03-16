@@ -4,7 +4,8 @@ import {Observable} from 'rxjs/Observable';
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
-import {Router, NavigationEnd} from '@angular/router'
+import {Router, NavigationEnd} from '@angular/router';
+import {menuItem} from './appModels/menuItem';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,13 @@ import {Router, NavigationEnd} from '@angular/router'
 
 export class AppComponent {
   mobileQuery: MediaQueryList;
-  fillerNav = Array(10).fill(0).map((_, i) => `Nav Item ${i + 1}`);
   private _mobileQueryListener: () => void;
   myControl: FormControl = new FormControl();
   options = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
   public isUserLoggedIn : boolean;
   public _this = this;
+  appMenu = []; 
   
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _router : Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -29,17 +30,25 @@ export class AppComponent {
     this.isUserLoggedIn = true;
   }
 
+  generateMenu(){
+    this.appMenu = [
+      new menuItem("Dashboard", "assessment", "/dashboard", true),
+      new menuItem("File Upload","backup","",true),
+      new menuItem("Settings","build","",true)
+    ];
+  }
+
   routeChangeHandler(event, that){
     var currentRoute =  event instanceof NavigationEnd  ? event : null;
     if(currentRoute && (currentRoute.url != '/' && currentRoute.url !="/login")){
       that.isUserLoggedIn = true;
-      debugger;
     } 
   }
 
   ngOnInit() {
     this.isUserLoggedIn = false;
     this._router.events.subscribe((event) => this.routeChangeHandler(event, this));
+    this.generateMenu();
   }
 
   ngOnDestroy(): void {
