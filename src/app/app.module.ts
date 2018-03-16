@@ -2,9 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
+
+import {AuthServiceService} from './services/auth-services/auth-service.service'
+
+import {LoginGuardGuard} from './guard/login-guard/login-guard.guard'
 
 import {AppRoutingModule} from './app-routing.module'
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -91,9 +96,13 @@ import {
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthServiceService,
+    LoginGuardGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

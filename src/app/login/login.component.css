@@ -1,0 +1,14 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    position: absolute;
+    top : 50%; 
+    left : 50%;
+    margin-top: -200px;
+    margin-left: -250px;
+  }
+  
+  .loginContainer > * {
+    width: 100%;
+  }

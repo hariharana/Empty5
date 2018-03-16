@@ -1,16 +1,8 @@
-<div class="app-container" [class.app-is-mobile]="mobileQuery.matches" *ngIf="true">
+<div class="app-container" [class.app-is-mobile]="mobileQuery.matches" *ngIf="isUserLoggedIn">
     <mat-toolbar color="primary" class="app-toolbar">
         <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
         <mat-icon>shopping_basket</mat-icon>
         <h1 class="app-name">Empty App</h1>
-        <!--<mat-form-field class="globalSearch">
-            <input type="text" placeholder="Search" aria-label="GlobalSearch" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of options" [value]="option">
-                {{ option }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>-->
           <div class="userHeader">
                 <span mat-button [matMenuTriggerFor]="menu" class="alertIcon">
                         <i *ngIf="true"><mat-icon>notifications_active</mat-icon></i>
@@ -30,16 +22,17 @@
                 <button mat-menu-item>Logout</button>
                 </mat-menu>
           </div>
+         </mat-toolbar>
     
-        </mat-toolbar>
-
-
     <mat-sidenav-container class="app-sidenav-container"
                             [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
         <mat-sidenav #snav opened [mode]="mobileQuery.matches ? 'over' : 'side'"
                     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
-            <a mat-list-item routerLink="." *ngFor="let nav of fillerNav"> <i class="material-icons md-18">face</i>   {{nav}}</a>
+            <a mat-list-item routerLink="." *ngFor="let nav of appMenu"> 
+                <i class="material-icons md-18">{{nav.icon}}</i>
+                <span class="nav-text">{{nav.menuName}}</span>
+            </a>
         </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
@@ -48,6 +41,6 @@
     </mat-sidenav-container>
 </div>
 
-<div *ngIf="false">
+<div *ngIf="!isUserLoggedIn">
     <router-outlet></router-outlet>
 </div>
