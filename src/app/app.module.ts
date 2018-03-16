@@ -6,6 +6,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
+import {AuthServiceService} from './services/auth-services/auth-service.service'
+
+import {LoginGuardGuard} from './guard/login-guard/login-guard.guard'
+
 import {AppRoutingModule} from './app-routing.module'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -93,7 +97,10 @@ import {
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthServiceService,
+    LoginGuardGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

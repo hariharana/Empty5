@@ -1,3 +1,10 @@
-<p>
-  login here!
-</p>
+<mat-card class="loginContainer">
+  <h1><i class="material-icons">lock_open</i> LOGIN</h1>
+    <mat-form-field>
+      <input matInput placeholder="UserName">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Password">
+      </mat-form-field>
+      <button mat-raised-button (click)="login()">Login</button>
+</mat-card>

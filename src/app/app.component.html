@@ -1,16 +1,8 @@
-<div class="app-container" [class.app-is-mobile]="mobileQuery.matches" *ngIf="true">
+<div class="app-container" [class.app-is-mobile]="mobileQuery.matches" *ngIf="isUserLoggedIn">
     <mat-toolbar color="primary" class="app-toolbar">
         <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
         <mat-icon>shopping_basket</mat-icon>
-        <h1 class="app-name">Empty App</h1>
-        <!--<mat-form-field class="globalSearch">
-            <input type="text" placeholder="Search" aria-label="GlobalSearch" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of options" [value]="option">
-                {{ option }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>-->
+        <h1 class="app-name">Empty App {{isUserLoggedIn}}</h1>
           <div class="userHeader">
                 <span mat-button [matMenuTriggerFor]="menu" class="alertIcon">
                         <i *ngIf="true"><mat-icon>notifications_active</mat-icon></i>
@@ -48,6 +40,6 @@
     </mat-sidenav-container>
 </div>
 
-<div *ngIf="false">
+<div *ngIf="!isUserLoggedIn">
     <router-outlet></router-outlet>
 </div>

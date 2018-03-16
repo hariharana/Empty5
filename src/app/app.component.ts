@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
+import {Router, NavigationEnd} from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -18,18 +19,27 @@ export class AppComponent {
   myControl: FormControl = new FormControl();
   options = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  public isUserLoggedIn : boolean;
+  public _this = this;
+  
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private _router : Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.isUserLoggedIn = true;
+  }
+
+  routeChangeHandler(event, that){
+    var currentRoute =  event instanceof NavigationEnd  ? event : null;
+    if(currentRoute && (currentRoute.url != '/' && currentRoute.url !="/login")){
+      that.isUserLoggedIn = true;
+      debugger;
+    } 
   }
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(val => this.filter(val))
-    );
+    this.isUserLoggedIn = false;
+    this._router.events.subscribe((event) => this.routeChangeHandler(event, this));
   }
 
   ngOnDestroy(): void {
