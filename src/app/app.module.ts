@@ -50,6 +50,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+import { SampleformComponent } from './dashboard/sampleform/sampleform.component';
+import { NumberonlyDirective } from './directives/numberonly.directive';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import {
     AppComponent,
     DashboardComponent,
     LoginComponent,
-    Error401Component
+    Error401Component,
+    SampleformComponent,
+    NumberonlyDirective
   ],
   imports: [
     MatAutocompleteModule,
