@@ -14,3 +14,7 @@ An Empty Seed for Angular 5 and Material design
 - [ ] User Access Control
 - [ ] Charts
 - [ ] Global search bar
+
+## Work In Progress - Screenshot
+
+![Screenshot](https://github.com/hariharana/Empty5/blob/master/Empty5LatestScreen.png)
