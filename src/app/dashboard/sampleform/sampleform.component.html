@@ -1,0 +1,59 @@
+<mat-card class="formContainer"> 
+  <div class="col-md-12">
+    <span class="col-md-4">
+      <button class="btn btn-primary" (click)="setFormValue()">
+            Load Inital Values
+      </button>
+    </span>
+    <span class="col-md-4">
+        <button class="btn btn-primary" (click)="resetForm()">
+            Reset Form
+        </button> 
+      </span>
+  </div>
+<form [formGroup]="sampleForm">
+  
+    <mat-form-field>
+      <input matInput placeholder="Enter First Name" formControlName="fName" required>
+      <mat-error *ngIf="!fName.valid">{{fName.errors.required}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Enter Middle Name" formControlName="mName">
+      <mat-error *ngIf="!mName.valid"></mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Enter Last Name" formControlName="lName" required>
+        <mat-error *ngIf="!lName.valid"></mat-error>
+    </mat-form-field>
+  
+  
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" formControlName="email" email required>
+      <mat-error *ngIf="email.invalid">Error</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <span matPrefix>$ &nbsp;</span>
+      <input matInput placeholder="Bank Balance" OnlyNumber="true" formControlName="bBalance">
+      <mat-icon matSuffix (click)="editCurrency()">mode_edit</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Preferences" formControlName="preferences" multiple>
+          <mat-option *ngFor="let preferences of preferenceList" [value]="preferences.id">{{preferences.display}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <button class="btn btn-primary" [disabled]="!sampleForm.valid" (click)="submit()">
+            Submit
+    </button>
+
+</form>
+</mat-card>
+
+<mat-card>
+  <pre>{{sampleForm.value | json}}</pre>
+</mat-card>
