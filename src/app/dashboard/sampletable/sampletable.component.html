@@ -48,3 +48,5 @@
   <mat-paginator [length]="resultsLength" [pageSize]="30">
   </mat-paginator>
 </div>
+
+<div>{{viewData$ | async | json}}</div>

@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 
 
 import { AppComponent } from './app.component';
@@ -53,6 +56,8 @@ import {
 import { SampleformComponent } from './dashboard/sampleform/sampleform.component'; 
 import { NumberonlyDirective } from './directives/numberonly.directive';
 import { SampletableComponent } from './dashboard/sampletable/sampletable.component';
+import { TableReducer } from './reducers/tableReducers';
+import {TableEffects} from './effects/table.effects';
 
 
 @NgModule({
@@ -103,7 +108,10 @@ import { SampletableComponent } from './dashboard/sampletable/sampletable.compon
     BrowserAnimationsModule,
     FormsModule, 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({GithubApi: TableReducer}),
+    EffectsModule.forRoot([TableEffects]),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     AuthServiceService,
