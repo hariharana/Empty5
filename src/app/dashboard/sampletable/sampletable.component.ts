@@ -1,5 +1,5 @@
 import { Component, OnInit , ViewChild } from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, PageEvent, Sort} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
 import {merge} from 'rxjs/observable/merge';
 import {of as observableOf} from 'rxjs/observable/of';
@@ -51,6 +51,10 @@ export class SampletableComponent implements OnInit {
     this.isLoadingResults = false;
     this.isRateLimitReached = false;
     this.resultsLength = 1000;
+
+    this.paginator.page.subscribe((pageEvent: PageEvent) => {
+      this.store.dispatch(new tableActions.LoadTable(this.sort.active, this.sort.direction, this.paginator.pageIndex));
+    })
 
     this.dataSource = new gitHubDataSource(this.viewData$);
 
