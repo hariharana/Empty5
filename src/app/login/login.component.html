@@ -1,10 +1,12 @@
-<mat-card class="loginContainer">
-  <h1><i class="material-icons">lock_open</i> LOGIN</h1>
-    <mat-form-field>
-      <input matInput placeholder="UserName">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Password">
+<div class="loginWrapper">
+  <mat-card class="loginContainer">
+    <h3><i class="material-icons">lock_open</i> Sign-In</h3>
+      <mat-form-field>
+        <input matInput placeholder="Email">
       </mat-form-field>
-      <button mat-raised-button (click)="login()">Login</button>
-</mat-card>
+      <mat-form-field>
+          <input matInput placeholder="Password">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="m-t-10" (click)="login()">Login</button>
+  </mat-card>
+</div>

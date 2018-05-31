@@ -1,17 +1,20 @@
 <mat-tab-group class="col-md-11">
     <mat-tab>
+        <ng-template mat-tab-label>
+           Dashboard
+        </ng-template>
+        <appDashboard></appDashboard>
+    </mat-tab>
+    <mat-tab>
       <ng-template mat-tab-label>
          Sample Form with validation
       </ng-template>
       <sampleform></sampleform>
-      
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
          Sample Table
       </ng-template>
-
       <sampletable></sampletable>
-      
     </mat-tab>
   </mat-tab-group>

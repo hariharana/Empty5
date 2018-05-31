@@ -58,6 +58,7 @@ import { NumberonlyDirective } from './directives/numberonly.directive';
 import { SampletableComponent } from './dashboard/sampletable/sampletable.component';
 import { TableReducer } from './reducers/tableReducers';
 import {TableEffects} from './effects/table.effects';
+import { AppDashboardComponent } from './dashboard/app-dashboard/app-dashboard.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {TableEffects} from './effects/table.effects';
     Error401Component,
     SampleformComponent,
     NumberonlyDirective,
-    SampletableComponent
+    SampletableComponent,
+    AppDashboardComponent
   ],
   imports: [
     MatAutocompleteModule,

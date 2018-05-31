@@ -1,14 +1,22 @@
-.loginContainer {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    position: absolute;
-    top : 50%; 
-    left : 50%;
-    margin-top: -200px;
-    margin-left: -250px;
-  }
+.loginWrapper{
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.loginContainer{
+  border-radius: 5px;
+  box-shadow: #8080806b 5px 5px !important;
+}
   
-  .loginContainer > * {
-    width: 100%;
-  }
+.loginContainer > * {
+   width: 100%;
+}

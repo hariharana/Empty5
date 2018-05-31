@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="m-t-10 dashboardHeaders">Sales Dashboard</div>
+  <div class="col-md-12 row m-t-10">
+    <div class="col-md-3">
+        <mat-card class="example-card red">
+            <mat-card-header>
+              <mat-card-title>Revenue</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <h1>
+                {{100 | currency}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card class="example-card green">
+            <mat-card-header>
+              <mat-card-title>Profit</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <h1>
+                {{50 | currency}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card class="example-card blue">
+            <mat-card-header>
+              <mat-card-title>Expenses</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <h1>
+                {{50 | currency}}
+              </h1>
+            </mat-card-content>
+          </mat-card>
+    </div>
+    <div class="col-md-3">
+        <mat-card class="example-card violet">
+            <mat-card-header>
+              <mat-card-title>Items Sold</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <h1>
+                10 Units
+              </h1>
+            </mat-card-content>
+          </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+        <div class="col-md-12 row m-t-10">
+            <div class="col-md-6">
+                <mat-card class="example-card yellow m-t-10">
+                    <mat-card-header>
+                      <mat-card-title style="color: white ; font-size: 18px;">Contacts</mat-card-title>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                  <mat-card-content>
+                      <mat-list>
+                          <mat-list-item>
+                            <mat-icon mat-list-icon>call</mat-icon>
+                            <h4 mat-line>Contact 1</h4>
+                            <p mat-line> +1 (111)111-1111 </p>
+                          </mat-list-item>
+                          <mat-divider></mat-divider>
+                          <mat-list-item>
+                              <mat-icon mat-list-icon>call</mat-icon>
+                              <h4 mat-line>Contact 2</h4>
+                              <p mat-line> +1 (111)111-1111 </p>
+                            </mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>
+                                <mat-icon mat-list-icon>call</mat-icon>
+                                <h4 mat-line>Contact 3</h4>
+                                <p mat-line> +1 (111)111-1111 </p>
+                              </mat-list-item>
+                      </mat-list>
+                </mat-card-content>
+              </mat-card>
+          </div>
+
+          <div class="col-md-6 m-t-10">
+              <div class="dashboardHeaders">Sales Chart</div>
+              <canvas id="canvas" class="m-t-10">{{ chart }}</canvas>
+          </div>
+
+
+        </div>
+</div>
+

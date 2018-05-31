@@ -1,0 +1,33 @@
+.example-card{
+    color: white;
+}
+
+.example-card.red{
+    background-color: #FF9800;
+} 
+
+.example-card.blue{
+    background-color : #03A9F4;
+} 
+
+.example-card.green{
+    background-color : #4CAF50;
+} 
+
+.example-card.violet{
+    background-color : #673AB7;
+}
+
+.example-card.yellow{
+    background-color : #90A4AE;
+}
+
+.dashboardHeaders{
+    color: #9c9c9c;
+    font-size: 20px;
+    border-bottom: 1px solid #b9b1b138;
+}
+
+.mat-list-item {
+    color: white;
+}

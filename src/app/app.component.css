@@ -7,6 +7,11 @@
     left: 0;
     right: 0;
   }
+
+  .app-toolbar{
+    background: black;
+    color: white;
+  }
   
   .app-is-mobile .app-toolbar {
     position: fixed;

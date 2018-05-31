@@ -3,5 +3,10 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 body{
-    background: #3354af;
+    background: url('./assets/login-bg.jpg') no-repeat;
+    background-size: cover;
+}
+
+.m-t-10{
+    margin-top: 10px;
 }
